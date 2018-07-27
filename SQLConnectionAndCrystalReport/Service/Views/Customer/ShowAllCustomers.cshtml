@@ -1,0 +1,64 @@
+﻿@model IEnumerable<SQLConnectionAndCrystalReport.Models.Customer>
+
+@{
+    ViewBag.Title = "ShowAllCustomers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Show All Customers</h2>
+<h4>@if(TempData["Message"] != null) {@TempData["Message"]}</h4>
+<p>
+    @Html.ActionLink("Create New", "InsertCustomer")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CusId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CusName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CusFatherName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CusMotherName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CusPhone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CusAddress)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CusId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CusName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CusFatherName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CusMotherName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CusPhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CusAddress)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "UpdateCustomer", new { id=item.CusId }) | 
+            @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
+            @Html.ActionLink("Delete", "DeleteCustomer", new { id = item.CusId })
+        </td>
+    </tr>
+}
+
+</table>
